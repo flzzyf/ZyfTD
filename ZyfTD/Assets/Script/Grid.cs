@@ -34,7 +34,7 @@ public class Grid : MonoBehaviour {
         //生成网格
         for (int i = 0; i < w; i++)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             for (int j = 0; j < h; j++)
             {
                 Vector3 pos = new Vector3(i * 0.5f, j * 0.5f, -0.25f);
