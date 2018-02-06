@@ -10,7 +10,6 @@ public class Move : MonoBehaviour {
         //获取物体与鼠标的位移
         Vector3 offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, ScreenSpace.z));
 
-        //Debug.Log("qwe");
         //while还按着鼠标
         while (Input.GetMouseButton(0))
         {
