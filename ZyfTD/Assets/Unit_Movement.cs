@@ -22,7 +22,7 @@ public class Unit_Movement : MonoBehaviour
         ReachTarget();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         //朝下个点方向
         Vector3 dir = targetWayPoint - transform.position;

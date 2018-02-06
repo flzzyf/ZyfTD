@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c187e389cb1344d86a691c0b478677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpeed: 3
+  rotSpeed: 10
   currentWayPointIndex: 0
 --- !u!114 &114151404140498072
 MonoBehaviour:

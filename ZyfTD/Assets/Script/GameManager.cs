@@ -31,16 +31,22 @@ public class GameManager : MonoBehaviour {
     private void Start()
     {
         //寻路
-        AStar.instance.FindPath(start.transform.position, end.transform.position);
+        UpdatePath();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            UpdatePath();
             gaming = true;
         }
             
+    }
+
+    public void UpdatePath()
+    {
+        AStar.instance.FindPath(start.transform.position, end.transform.position);
 
     }
 }

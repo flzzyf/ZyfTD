@@ -17,25 +17,29 @@ public class NodeUnit : MonoBehaviour {
     {
         walkable = !walkable;
         setWalkable(walkable);
+        //更新路径
+        GameManager.instance.UpdatePath();
+
     }
 
     void setWalkable(bool _walkable)
     {
+        Debug.Log("qwe");
         //设置节点可通行属性
         GameManager.instance.map.GetNode(transform.position).walkable = _walkable;
         //变色
         if (_walkable)
         {
             //可通行
-            transform.Translate(Vector3.forward * 2);
             GetComponent<Renderer>().material.color = Color.white;
+            GetComponent<Renderer>().sortingOrder = 2;
         }
         else
         {
             //不可通行
-            transform.Translate(-Vector3.forward * 2);
-
             GetComponent<Renderer>().material.color = Color.red;
+            GetComponent<Renderer>().sortingOrder = 4;
+
         }
     }
 }
