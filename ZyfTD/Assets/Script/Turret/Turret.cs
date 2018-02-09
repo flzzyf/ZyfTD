@@ -69,11 +69,11 @@ public class Turret : MonoBehaviour {
         //方向
         Vector3 direction = _target - transform.position;
         //平面化
-        direction.z = 0f;
+        //direction.z = 0f;
         //长度设为1
         direction.Normalize();
 
-        transform.up = direction;
+        transform.forward = direction;
     }
 
     bool canAttack()

@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  maxHp: 3
+  maxHp: 50
   gfx: {fileID: 0}
 --- !u!212 &212753950890219046
 SpriteRenderer:

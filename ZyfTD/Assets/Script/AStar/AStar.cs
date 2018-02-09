@@ -54,6 +54,7 @@ public class AStar : MonoBehaviour {
             //如果就是终点
             if(curNode == endNode)
             {
+                Debug.Log("到达终点");
                 GeneratePath(startNode, endNode);
 
                 return;
@@ -113,11 +114,11 @@ public class AStar : MonoBehaviour {
     {
         //先斜着走然后直走
         int X = Mathf.Abs(a.x - b.x);
-        int Y = Mathf.Abs(a.y - b.y);
+        int Z = Mathf.Abs(a.z - b.z);
 
-        if (X > Y)
-            return 14 * Y + 10 * (X - Y);
+        if (X > Z)
+            return 14 * Z + 10 * (X - Z);
         else
-            return 14 * X + 10 * (Y - X);
+            return 14 * X + 10 * (Z - X);
     }
 }

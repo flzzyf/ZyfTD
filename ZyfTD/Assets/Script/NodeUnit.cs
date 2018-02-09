@@ -32,13 +32,11 @@ public class NodeUnit : MonoBehaviour {
         {
             //可通行
             GetComponent<Renderer>().material.color = Color.white;
-            GetComponent<Renderer>().sortingOrder = 2;
         }
         else
         {
             //不可通行
             GetComponent<Renderer>().material.color = Color.red;
-            GetComponent<Renderer>().sortingOrder = 4;
 
         }
     }
