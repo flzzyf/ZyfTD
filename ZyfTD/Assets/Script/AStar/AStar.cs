@@ -90,7 +90,7 @@ public class AStar : MonoBehaviour {
     //生成路径
     void GeneratePath(Node _startNode, Node _lastNode)
     {
-        Debug.Log("生成路径");
+        //Debug.Log("生成路径");
         Node curNode = _lastNode;
 
         List<Node> path = new List<Node>();
