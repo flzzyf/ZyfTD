@@ -52,7 +52,7 @@ public class Turret : MonoBehaviour {
     {
         List<GameObject> targets = new List<GameObject>();
 
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, range);
+        Collider[] cols = Physics.OverlapSphere(transform.position, range);
         foreach (var item in cols)
         {
             if (item.gameObject.tag == GameManager.enemyTag)
@@ -68,8 +68,6 @@ public class Turret : MonoBehaviour {
     {
         //方向
         Vector3 direction = _target - transform.position;
-        //平面化
-        //direction.z = 0f;
         //长度设为1
         direction.Normalize();
 

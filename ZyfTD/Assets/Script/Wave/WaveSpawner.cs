@@ -61,9 +61,7 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < currentWave.waveUnits.Length; i++)
             enemiesAlive += currentWave.waveUnits[i].num;
 
-        Debug.Log(enemiesAlive);
-        startPoint = GameManager.instance.path[0].pos;
-
+        startPoint = GameManager.instance.start.transform.position;
 
         for (int i = 0; i < currentWave.waveUnits.Length; i++)
         {

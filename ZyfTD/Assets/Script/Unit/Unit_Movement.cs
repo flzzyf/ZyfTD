@@ -19,7 +19,7 @@ public class Unit_Movement : MonoBehaviour
 
         path = GameManager.instance.path;
 
-        ReachTarget();
+        //ReachTarget();
     }
 
     void FixedUpdate()
@@ -29,13 +29,13 @@ public class Unit_Movement : MonoBehaviour
         //移动
         transform.Translate(dir.normalized * unit.speed * Time.deltaTime, Space.World);
         //旋转
-        if (dir != Vector3.zero)
-        {
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
-            //旋转
-            transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotSpeed * Time.deltaTime);
-        }
+        //if (dir != Vector3.zero)
+        //{
+        //    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        //    Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward);
+        //    //旋转
+        //    transform.rotation = Quaternion.Lerp(transform.rotation, rot, rotSpeed * Time.deltaTime);
+        //}
         //抵达
         if (dir.magnitude <= unit.speed * Time.deltaTime)
         {
@@ -67,6 +67,17 @@ public class Unit_Movement : MonoBehaviour
             //继续走
             GetNextWayPoint();
         }
+    }
+
+    //朝向目标点
+    void AimTarget(Vector3 _target)
+    {
+        //方向
+        Vector3 direction = _target - transform.position;
+        //长度设为1
+        direction.Normalize();
+
+        transform.forward = direction;
     }
 
 }

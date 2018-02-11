@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
     public Map map;
 
     public List<Node> path;
-
+    //起点和终点
     public GameObject start;
     public GameObject end;
     //游戏中
@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour {
     public bool gaming = false;
     //敌人Tag
     public static string enemyTag = "Enemy";
-
 
     private void Start()
     {

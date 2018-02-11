@@ -6,6 +6,13 @@ public class NodeUnit : MonoBehaviour {
 
     bool walkable = true;
 
+    Renderer renderer;
+
+    private void Start()
+    {
+        renderer = GetComponentInChildren<Renderer>();
+    }
+
     IEnumerator OnMouseDown()
     {
         toggleWalkable();
@@ -31,12 +38,12 @@ public class NodeUnit : MonoBehaviour {
         if (_walkable)
         {
             //可通行
-            GetComponent<Renderer>().material.color = Color.white;
+            renderer.material.color = Color.white;
         }
         else
         {
             //不可通行
-            GetComponent<Renderer>().material.color = Color.red;
+            renderer.material.color = Color.red;
 
         }
     }

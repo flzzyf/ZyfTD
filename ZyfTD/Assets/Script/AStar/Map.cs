@@ -18,7 +18,6 @@ public class Map : MonoBehaviour {
     {
         nodes = new Node[mapSizeX, mapSizeY];
         nodeParent = new GameObject("nodes");
-        pathParent = new GameObject("path");
         //根据地图尺寸生成节点
         for (int z = 0; z < mapSizeY; z++)
         {
@@ -39,20 +38,6 @@ public class Map : MonoBehaviour {
     {
         List<Node> list = new List<Node>();
         //搜索周围是否有可通行节点
-        /*周围九格
-        for (int i = -1; i <= 1; i++)
-        {
-            for (int j = -1; j <= 1; j++)
-            {
-                if (i == 0 && j == 0)
-                    continue;
-                int x = _node.x + i;
-                int z = _node.z + j;
-                if (x < mapSizeX && x >= 0 && z < mapSizeY && z >= 0)
-                    list.Add(nodes[x, z]);
-            }
-        }
-        */
         //不能斜着走（只判断上下左右四格）
         for (int i = -1; i <= 1; i++)
         {
@@ -76,43 +61,29 @@ public class Map : MonoBehaviour {
 
         return nodes[x, z];
     }
-#region 路径显示
-    //路径节点预设
-    public GameObject pathPrefab;
-    //路径节点文件夹
-    GameObject pathParent;
-    //路径物体
-    private List<GameObject> pathObj = new List<GameObject>();
-
-    //绘制路径
-    public void updatePath(List<Node> lines)
+    #region 路径显示
+    public LineRenderer line;
+    //显示路径
+    public void PathShow(List<Node> lines)
     {
-        int curListSize = pathObj.Count;
+        //显示路径物体
+        if(!line.enabled)
+            line.enabled = true;
+
+        line.positionCount = lines.Count + 1;
+        //设置路径点
+        line.SetPosition(0, GameManager.instance.start.transform.position);
         for (int i = 0; i < lines.Count; i++)
         {
-            if (i < curListSize)
-            {
-                pathObj[i].transform.position = lines[i].pos;
-                pathObj[i].SetActive(true);
-            }
-            else
-            {
-                GameObject obj = GameObject.Instantiate(pathPrefab, lines[i].pos, Quaternion.identity, pathParent.transform) as GameObject;
-                pathObj.Add(obj);
-            }
-        }
-        for (int i = lines.Count; i < curListSize; i++)
-        {
-            pathObj[i].SetActive(false);
+            line.SetPosition(i + 1, lines[i].pos);
         }
     }
+
     //隐藏路径
-    public void clearPath()
+    public void PathHide()
     {
-        for (int i = 0; i < pathObj.Count; i++)
-        {
-            pathObj[i].SetActive(false);
-        }
+        line.enabled = false;
     }
-#endregion
+    #endregion
+
 }

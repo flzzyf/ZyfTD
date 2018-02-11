@@ -85,7 +85,7 @@ public class AStar : MonoBehaviour {
             }
         }
         Debug.Log("无法通行");
-        map.clearPath();
+        map.PathHide();
 
     }
     //生成路径
@@ -106,7 +106,8 @@ public class AStar : MonoBehaviour {
         path.Reverse();
 
         GameManager.instance.path = path;
-        map.updatePath(path);
+        //map.updatePath(path);
+        map.PathShow(path);
     }
 
     //节点间路径距离估计算法
