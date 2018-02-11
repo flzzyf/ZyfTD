@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Node{
-
+    //可通行
     public bool walkable = true;
+    //为起点、终点
+    public bool isStartOrEnd = false;
+    
     //xy坐标
     public int x;
     public int z;
