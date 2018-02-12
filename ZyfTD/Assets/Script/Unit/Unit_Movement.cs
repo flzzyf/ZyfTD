@@ -19,7 +19,7 @@ public class Unit_Movement : MonoBehaviour
 
         path = GameManager.instance.path;
 
-        //ReachTarget();
+        GetNextWayPoint();
     }
 
     void FixedUpdate()

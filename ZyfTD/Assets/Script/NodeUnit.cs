@@ -31,7 +31,6 @@ public class NodeUnit : MonoBehaviour {
 
     void setWalkable(bool _walkable)
     {
-        Debug.Log("qwe");
         //设置节点可通行属性
         GameManager.instance.map.GetNode(transform.position).walkable = _walkable;
         //变色

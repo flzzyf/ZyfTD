@@ -48,6 +48,12 @@ public class GameManager : MonoBehaviour {
             gaming = true;
         }
     }
+    //回合开始
+    public void RoundStart()
+    {
+        gaming = true;
+
+    }
     //随机设置起点和终点
     void RandomStartAndEnd()
     {
