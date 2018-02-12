@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour {
     public bool gaming = false;
     //敌人Tag
     public static string enemyTag = "Enemy";
+    //路径长度文本
+    public Text PathLengthText;
 
     private void Start()
     {

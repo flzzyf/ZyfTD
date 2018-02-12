@@ -86,6 +86,8 @@ public class AStar : MonoBehaviour {
         }
         Debug.Log("无法通行");
         map.PathHide();
+        GameManager.instance.PathLengthText.text = "完全无法通行";
+        GameManager.instance.PathLengthText.color = Color.red;
 
     }
     //生成路径
@@ -108,6 +110,9 @@ public class AStar : MonoBehaviour {
         GameManager.instance.path = path;
         //map.updatePath(path);
         map.PathShow(path);
+        GameManager.instance.PathLengthText.text = "路径长度:" + path.Count;
+        GameManager.instance.PathLengthText.color = Color.white;
+
     }
 
     //节点间路径距离估计算法
