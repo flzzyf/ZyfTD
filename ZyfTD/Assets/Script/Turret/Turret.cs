@@ -55,7 +55,7 @@ public class Turret : MonoBehaviour {
         Collider[] cols = Physics.OverlapSphere(transform.position, range);
         foreach (var item in cols)
         {
-            if (item.gameObject.tag == GameManager.enemyTag)
+            if (item.gameObject.tag == GameManager.instance.enemyTag)
             {
                 targets.Add(item.gameObject);
             }

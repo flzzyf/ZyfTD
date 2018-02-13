@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     [HideInInspector]
     public bool gaming = false;
     //敌人Tag
-    public static string enemyTag = "Enemy";
+    public string enemyTag = "Enemy";
     //路径长度文本
     public Text PathLengthText;
 
@@ -48,12 +48,7 @@ public class GameManager : MonoBehaviour {
             gaming = true;
         }
     }
-    //回合开始
-    public void RoundStart()
-    {
-        gaming = true;
 
-    }
     //随机设置起点和终点
     void RandomStartAndEnd()
     {
@@ -83,6 +78,7 @@ public class GameManager : MonoBehaviour {
         node = nodes[Random.Range(0, nodes.Count)];
         end.transform.position = node.pos;
     }
+
     //获取非起点或终点的边缘节点列表
     List<Node> GetPlainNode()
     {

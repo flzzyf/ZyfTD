@@ -1362,6 +1362,7 @@ GameObject:
   - component: {fileID: 2013957843}
   - component: {fileID: 2013957846}
   - component: {fileID: 2013957847}
+  - component: {fileID: 2013957848}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1395,6 +1396,7 @@ MonoBehaviour:
   start: {fileID: 1798699305}
   end: {fileID: 920113866}
   gaming: 0
+  enemyTag: Enemy
   PathLengthText: {fileID: 1608870477}
 --- !u!4 &2013957844
 Transform:
@@ -1438,7 +1440,7 @@ MonoBehaviour:
   wave:
   - waveUnits:
     - unit: {fileID: 1987658663008954, guid: 1eaca1eb3cf3d284e9327b4ade6779c7, type: 2}
-      num: 1
+      num: 10
       rate: 1
   timeBetweenWaves: 3
 --- !u!120 &2013957847
@@ -1529,6 +1531,19 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
+--- !u!114 &2013957848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013957841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5b2d371a2851a4b8a06b72d3186763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wave: []
+  currentWaveIndex: 0
 --- !u!1 &2039824685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,7 +1620,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2013957843}
+      - m_Target: {fileID: 2013957848}
         m_MethodName: RoundStart
         m_Mode: 1
         m_Arguments:
