@@ -18,11 +18,13 @@ public class Turret : MonoBehaviour {
     public int maxXmmoCount = 1;
     int currentAmmoCount;
 
-    void Start () {
+    //回合初始化
+    public void Init()
+    {
         currentAmmoCount = maxXmmoCount;
-	}
-	
-	void Update () {
+    }
+
+    void Update () {
         if (currentAmmoCount <= 0)
             return;
 

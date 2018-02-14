@@ -36,6 +36,8 @@ public class PlayerStats : MonoBehaviour {
     {
         Debug.Log("游戏失败");
         GameManager.instance.gaming = false;
+
+        RoundManager.instance.EndTheRound();
     }
 	
 	

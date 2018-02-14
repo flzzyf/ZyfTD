@@ -32,12 +32,19 @@ public class GameManager : MonoBehaviour {
     //路径长度文本
     public Text PathLengthText;
 
+    public GameObject turrets;
+
+    public GameObject enemies;
+
     private void Start()
     {
         //随机设置起点和终点
         RandomStartAndEnd();
         //寻路
         UpdatePath();
+
+        //turrets = new GameObject("Turrets");
+        enemies = new GameObject("Enemies");
     }
 
     void Update()

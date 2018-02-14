@@ -15,6 +15,9 @@ public class RoundManager : MonoBehaviour {
     }
     #endregion
 
+    public GameObject turretPrefab;
+    public GameObject newTurret;
+
     //还在生成敌人
     bool spawningWave = false;
 
@@ -37,6 +40,13 @@ public class RoundManager : MonoBehaviour {
         //Debug.Log("回合开始");
         GameManager.instance.gaming = true;
 
+        //补充弹药
+        foreach (Transform item in GameManager.instance.turrets.transform)
+        {
+            item.gameObject.GetComponent<Turret>().Init();
+
+        }
+
         WaveSpawner.instance.StartSpawn();
 
     }
@@ -55,6 +65,33 @@ public class RoundManager : MonoBehaviour {
         //回合结束
         RoundEnd();
         Debug.Log("回合胜利");
+
+        //完成所有波次
+        if(WaveSpawner.currentWaveIndex + 1 == WaveSpawner.instance.wave.Length)
+        {
+            Debug.Log("已经完成所有波次！");
+
+        }
+        else
+        {
+            WaveSpawner.currentWaveIndex++;
+
+            Instantiate(turretPrefab, newTurret.transform.position, Quaternion.identity, GameManager.instance.turrets.transform);
+        }
+
+        
+    }
+
+    public void EndTheRound()
+    {
+        WaveSpawner.instance.StopAllCoroutines();
+
+        WaveSpawner.enemiesAlive = 0;
+
+        foreach (Transform item in GameManager.instance.enemies.transform)
+        {
+            Destroy(item.gameObject);
+        }
     }
 
 

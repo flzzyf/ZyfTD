@@ -22,7 +22,7 @@ public class WaveSpawner : MonoBehaviour
 
     Vector3 startPoint;
     //当前波次
-    public int currentWaveIndex = 0;
+    public static int currentWaveIndex = 0;
     //剩余敌人
     public static int enemiesAlive = 0;
 
@@ -31,6 +31,7 @@ public class WaveSpawner : MonoBehaviour
         //设定起点
         startPoint = GameManager.instance.start.transform.position;
 
+        StopAllCoroutines();
         StartCoroutine(SpawnWave());
 
     }
@@ -40,10 +41,9 @@ public class WaveSpawner : MonoBehaviour
     {
         spawningWave = true;
 
-        int waveIndex = currentWaveIndex;
-        Debug.Log("回合" + waveIndex + "开始");
+        Debug.Log("回合" + currentWaveIndex + "开始");
 
-        Wave currentWave = wave[waveIndex];
+        Wave currentWave = wave[currentWaveIndex];
 
         for (int i = 0; i < currentWave.waveUnits.Length; i++)
             enemiesAlive += currentWave.waveUnits[i].num;
@@ -53,7 +53,7 @@ public class WaveSpawner : MonoBehaviour
         {
             for (int j = 0; j < currentWave.waveUnits[i].num; j++)
             {
-                GameObject unit = Instantiate(currentWave.waveUnits[i].unit, startPoint, Quaternion.identity);
+                GameObject unit = Instantiate(currentWave.waveUnits[i].unit, startPoint, Quaternion.identity, GameManager.instance.enemies.transform);
 
                 yield return new WaitForSeconds(currentWave.waveUnits[i].rate);
             }
