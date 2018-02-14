@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
     [HideInInspector]
     public bool gaming = false;
     //敌人Tag
-    public string enemyTag = "Enemy";
+    public static string enemyTag = "Enemy";
     //路径长度文本
     public Text PathLengthText;
 
@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //UpdatePath();
-            gaming = true;
         }
     }
 
@@ -56,7 +55,7 @@ public class GameManager : MonoBehaviour {
         //设置起点
         Node node = nodes[Random.Range(0, nodes.Count)];
         start.transform.position = node.pos;
-        node.isStartOrEnd = true;
+        SetStartOrEndNode(start, Color.red);
 
         //设置终点
         nodes = GetPlainNode();
@@ -77,6 +76,16 @@ public class GameManager : MonoBehaviour {
         }
         node = nodes[Random.Range(0, nodes.Count)];
         end.transform.position = node.pos;
+        SetStartOrEndNode(end, Color.cyan);
+
+    }
+
+    void SetStartOrEndNode(GameObject _go, Color _color)
+    {
+        Node node = map.GetNode(_go.transform.position);
+        node.isStartOrEnd = true;
+        GameObject nodeUnit = map.GetNodeUnit(_go.transform.position);
+        nodeUnit.GetComponentInChildren<Renderer>().material.color = _color;
     }
 
     //获取非起点或终点的边缘节点列表

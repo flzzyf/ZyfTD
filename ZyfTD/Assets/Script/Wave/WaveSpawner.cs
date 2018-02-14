@@ -4,28 +4,43 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
+    #region Singleton
+    public static WaveSpawner instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+            Destroy(this);
+        instance = this;
+    }
+    #endregion
+
     public Wave[] wave;
-
-    public float timeBetweenWaves = 3f;
-
 
     //回合中
     bool spawningWave = false;
 
-
     Vector3 startPoint;
+    //当前波次
+    public int currentWaveIndex = 0;
+    //剩余敌人
+    public static int enemiesAlive = 0;
 
-    void Update()
+    public void StartSpawn()
     {
-        
+        //设定起点
+        startPoint = GameManager.instance.start.transform.position;
+
+        StartCoroutine(SpawnWave());
 
     }
+
     //回合开始
     IEnumerator SpawnWave()
     {
         spawningWave = true;
 
-        int waveIndex = RoundManager.instance.currentWaveIndex;
+        int waveIndex = currentWaveIndex;
         Debug.Log("回合" + waveIndex + "开始");
 
         Wave currentWave = wave[waveIndex];
@@ -33,7 +48,6 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < currentWave.waveUnits.Length; i++)
             enemiesAlive += currentWave.waveUnits[i].num;
 
-        startPoint = GameManager.instance.start.transform.position;
 
         for (int i = 0; i < currentWave.waveUnits.Length; i++)
         {
@@ -45,7 +59,6 @@ public class WaveSpawner : MonoBehaviour
             }
         }
 
-        RoundManager.instance.RoundWin();
     }
 
 }

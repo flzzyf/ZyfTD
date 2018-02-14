@@ -8,14 +8,19 @@ public class NodeUnit : MonoBehaviour {
 
     Renderer renderer;
 
+    Color originalColor;
+
     private void Start()
     {
         renderer = GetComponentInChildren<Renderer>();
+        originalColor = renderer.material.color;
     }
 
     IEnumerator OnMouseDown()
     {
-        toggleWalkable();
+        //非起点或终点
+        if (!GameManager.instance.map.GetNode(transform.position).isStartOrEnd)
+            toggleWalkable();
 
         yield return new WaitForFixedUpdate();
     }
@@ -37,12 +42,12 @@ public class NodeUnit : MonoBehaviour {
         if (_walkable)
         {
             //可通行
-            renderer.material.color = Color.white;
+            renderer.material.color = originalColor;
         }
         else
         {
             //不可通行
-            renderer.material.color = Color.red;
+            renderer.material.color = Color.black;
 
         }
     }

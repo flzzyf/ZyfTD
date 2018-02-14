@@ -9,7 +9,10 @@ public class Map : MonoBehaviour {
 
     public GameObject nodePrefab;
 
+    //节点
     public Node[,] nodes;
+    //节点单位
+    public GameObject[,] nodeUnits;
     //节点文件夹
     GameObject nodeParent;
 
@@ -17,6 +20,7 @@ public class Map : MonoBehaviour {
     private void Awake()
     {
         nodes = new Node[mapSizeX, mapSizeY];
+        nodeUnits = new GameObject[mapSizeX, mapSizeY];
         nodeParent = new GameObject("nodes");
         //根据地图尺寸生成节点
         for (int z = 0; z < mapSizeY; z++)
@@ -25,10 +29,12 @@ public class Map : MonoBehaviour {
             {
                 Vector3 pos = new Vector3(x, 0, z);
                 //生成节点
-                nodes[x, z] = new Node(x, z);
+                Node node = new Node(x, z);
+                nodes[x, z] = node;
                 //生成墙
                 GameObject obj = Instantiate(nodePrefab, pos, Quaternion.identity);
                 obj.transform.SetParent(nodeParent.transform);
+                nodeUnits[x, z] = obj;
                 
             }
         }
@@ -60,6 +66,14 @@ public class Map : MonoBehaviour {
         int z = Mathf.Clamp((int)_pos.z, 0, mapSizeY - 1);
 
         return nodes[x, z];
+    }
+    //根据所给Vector3获取相应nodeUnit
+    public GameObject GetNodeUnit(Vector3 _pos)
+    {
+        int x = Mathf.Clamp((int)_pos.x, 0, mapSizeX - 1);
+        int z = Mathf.Clamp((int)_pos.z, 0, mapSizeY - 1);
+
+        return nodeUnits[x, z];
     }
     #region 路径显示
     public LineRenderer line;

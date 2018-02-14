@@ -54,7 +54,7 @@ public class AStar : MonoBehaviour {
             //如果就是终点
             if(curNode == endNode)
             {
-                Debug.Log("到达终点");
+                //Debug.Log("到达终点");
                 GeneratePath(startNode, endNode);
 
                 return;
