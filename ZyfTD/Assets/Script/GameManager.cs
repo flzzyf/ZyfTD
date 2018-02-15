@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
         //设置起点
         Node node = nodes[Random.Range(0, nodes.Count)];
         start.transform.position = node.pos;
-        SetStartOrEndNode(start, Color.red);
+        SetStartOrEndNode(start, 1, Color.red);
 
         //设置终点
         nodes = GetPlainNode();
@@ -83,14 +83,14 @@ public class GameManager : MonoBehaviour {
         }
         node = nodes[Random.Range(0, nodes.Count)];
         end.transform.position = node.pos;
-        SetStartOrEndNode(end, Color.cyan);
+        SetStartOrEndNode(end, 2, Color.cyan);
 
     }
 
-    void SetStartOrEndNode(GameObject _go, Color _color)
+    void SetStartOrEndNode(GameObject _go, int _a, Color _color)
     {
         Node node = map.GetNode(_go.transform.position);
-        node.isStartOrEnd = true;
+        node.isStartOrEnd = _a;
         GameObject nodeUnit = map.GetNodeUnit(_go.transform.position);
         nodeUnit.GetComponentInChildren<Renderer>().material.color = _color;
     }
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour {
                 if (!(i == 0 || i == 5 || j == 0 || j == 5))
                     continue;
                 //非起点或终点
-                if (!map.nodes[i, j].isStartOrEnd)
+                if (map.nodes[i, j].isStartOrEnd == 0)
                 {
                     nodes.Add(map.nodes[i, j]);
                 }

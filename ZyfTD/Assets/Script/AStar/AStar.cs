@@ -55,7 +55,7 @@ public class AStar : MonoBehaviour {
             if(curNode == endNode)
             {
                 //Debug.Log("到达终点");
-                GeneratePath(startNode, endNode);
+                map.GeneratePath(startNode, endNode);
 
                 return;
             }
@@ -70,7 +70,7 @@ public class AStar : MonoBehaviour {
                 //判断新节点耗费
                 int newH = GetNodeDistance(curNode, item);
                 int newCost = curNode.g + newH;
-                //耗费更低或不在开集中
+                //耗费更低或不在开集中，则加入开集
                 if(newCost < item.g || !openSet.Contains(item))
                 {
                     //
@@ -90,30 +90,7 @@ public class AStar : MonoBehaviour {
         GameManager.instance.PathLengthText.color = Color.red;
 
     }
-    //生成路径
-    void GeneratePath(Node _startNode, Node _lastNode)
-    {
-        //Debug.Log("生成路径");
-        Node curNode = _lastNode;
 
-        List<Node> path = new List<Node>();
-
-        while(curNode != _startNode)
-        {
-            path.Add(curNode);
-
-            curNode = curNode.parentNode;
-        }
-        //反转路径然后生成显示路径
-        path.Reverse();
-
-        GameManager.instance.path = path;
-        //map.updatePath(path);
-        map.PathShow(path);
-        GameManager.instance.PathLengthText.text = "路径长度:" + path.Count;
-        GameManager.instance.PathLengthText.color = Color.white;
-
-    }
 
     //节点间路径距离估计算法
     int GetNodeDistance(Node a, Node b)

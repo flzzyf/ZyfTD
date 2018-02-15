@@ -29,7 +29,7 @@ public class WaveSpawner : MonoBehaviour
     public void StartSpawn()
     {
         //设定起点
-        startPoint = GameManager.instance.start.transform.position;
+        startPoint = GameManager.instance.path[0].pos;
 
         StopAllCoroutines();
         StartCoroutine(SpawnWave());

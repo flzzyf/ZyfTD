@@ -61,6 +61,7 @@ public class Map : MonoBehaviour {
         }
         return list;
     }
+
     //根据所给Vector3获取相应node
     public Node GetNode(Vector3 _pos)
     {
@@ -69,6 +70,7 @@ public class Map : MonoBehaviour {
 
         return nodes[x, z];
     }
+
     //根据所给Vector3获取相应nodeUnit
     public GameObject GetNodeUnit(Vector3 _pos)
     {
@@ -77,6 +79,47 @@ public class Map : MonoBehaviour {
 
         return nodeUnits[x, z];
     }
+
+    //生成路径
+    public void GeneratePath(Node _startNode, Node _lastNode)
+    {
+        //Debug.Log("生成路径");
+        Node curNode = _lastNode;
+
+        List<Node> path = new List<Node>();
+
+        while (curNode != _startNode)
+        {
+            path.Add(curNode);
+
+            curNode = curNode.parentNode;
+        }
+
+        path.Add(_startNode);
+        //反转路径然后生成显示路径
+        path.Reverse();
+
+        GameManager.instance.path = path;
+        //map.updatePath(path);
+
+        PathShow(path);
+        //路径长度提示文本
+        GameManager.instance.PathLengthText.text = "路径长度:" + (path.Count - 1);
+        GameManager.instance.PathLengthText.color = Color.white;
+
+    }
+
+    //反转路径
+    public void ReversePath()
+    {
+        GameManager.instance.path.Reverse();
+
+        //起点和终点对换
+        List<Node> path = GameManager.instance.path;
+        path[0].isStartOrEnd = 1;
+        path[path.Count - 1].isStartOrEnd = 2;
+    }
+
     #region 路径显示
     public LineRenderer line;
     //显示路径
@@ -86,12 +129,12 @@ public class Map : MonoBehaviour {
         if(!line.enabled)
             line.enabled = true;
 
-        line.positionCount = lines.Count + 1;
+        line.positionCount = lines.Count;
         //设置路径点
-        line.SetPosition(0, GameManager.instance.start.transform.position);
+        //line.SetPosition(0, GameManager.instance.start.transform.position);
         for (int i = 0; i < lines.Count; i++)
         {
-            line.SetPosition(i + 1, lines[i].pos);
+            line.SetPosition(i, lines[i].pos);
         }
         //设置路径颜色按长度变化
         if(lines.Count < 13)

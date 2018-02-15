@@ -6,7 +6,7 @@ public class Node{
     //可通行
     public bool walkable = true;
     //为起点、终点
-    public bool isStartOrEnd = false;
+    public int isStartOrEnd = 0;
     
     //xy坐标
     public int x;

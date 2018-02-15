@@ -23,12 +23,15 @@ public class NodeUnit : MonoBehaviour {
     IEnumerator OnMouseDown()
     {
         //非起点或终点
-        if (!GameManager.instance.map.GetNode(transform.position).isStartOrEnd)
+        if (GameManager.instance.map.GetNode(transform.position).isStartOrEnd == 0)
             toggleWalkable();
         else
         {
-            //为起点或终点
-            Debug.Log("起点");
+            //终点则反转路径
+            if(GameManager.instance.map.GetNode(transform.position).isStartOrEnd == 2)
+                GameManager.instance.map.ReversePath();
+
+            RoundManager.instance.RoundStart();
         }
 
         yield return new WaitForFixedUpdate();

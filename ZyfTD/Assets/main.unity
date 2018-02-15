@@ -1025,7 +1025,7 @@ GameObject:
   - component: {fileID: 1223789806}
   - component: {fileID: 1223789805}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Desc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1081,7 +1081,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5728\u5468\u56F4\u654C\u4EBA\u9760\u8FD1\u540E\uFF0C\u53D1\u5C04\u4E00\u679A\u76F4\u7EBF\u7A7F\u900F\u654C\u4EBA\u7684\u98DE\u5F39\u3002"
+  m_Text: "\u5728\u88AB\u654C\u4EBA\u8E29\u4E2D\u540E\uFF0C\u53D1\u5C04\u4E00\u679A\u76F4\u7EBF\u7A7F\u900F\u98DE\u5F39\u3002"
 --- !u!222 &1223789806
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1427,7 +1427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19852942, g: 0.19852942, b: 0.19852942, a: 1}
+  m_Color: {r: 0.19852942, g: 0.19852942, b: 0.19852942, a: 0.934}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
