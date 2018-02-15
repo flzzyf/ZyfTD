@@ -16,6 +16,8 @@ public class Map : MonoBehaviour {
     //节点文件夹
     GameObject nodeParent;
 
+    public Color[] pathColor;
+
     //在搜索开始前执行
     private void Awake()
     {
@@ -91,6 +93,35 @@ public class Map : MonoBehaviour {
         {
             line.SetPosition(i + 1, lines[i].pos);
         }
+        //设置路径颜色按长度变化
+        if(lines.Count < 13)
+        {
+            line.startColor = pathColor[0];
+            line.endColor = pathColor[0];
+        }
+        else if (lines.Count == 13)
+        {
+            line.startColor = pathColor[1];
+            line.endColor = pathColor[1];
+        }
+        else if (lines.Count == 14)
+        {
+            line.startColor = pathColor[2];
+            line.endColor = pathColor[2];
+        }
+        else if (lines.Count == 15)
+        {
+            line.startColor = pathColor[3];
+            line.endColor = pathColor[3];
+        }
+        else if (lines.Count == 16)
+        {
+            line.startColor = pathColor[4];
+            line.endColor = pathColor[4];
+        }
+
+
+
     }
 
     //隐藏路径

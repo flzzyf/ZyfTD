@@ -1594,6 +1594,12 @@ MonoBehaviour:
   mapSizeX: 5
   mapSizeY: 5
   nodePrefab: {fileID: 1126241702129320, guid: 6d569233cb358fc428c25dbee3412492, type: 2}
+  pathColor:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.034331724, g: 0.9338235, b: 0.30107754, a: 1}
+  - {r: 0, g: 0.5448277, b: 1, a: 1}
+  - {r: 0.75669074, g: 0.046929054, b: 0.9117647, a: 1}
+  - {r: 1, g: 0.6827586, b: 0, a: 1}
   line: {fileID: 2013957847}
 --- !u!114 &2013957846
 MonoBehaviour:
@@ -1697,7 +1703,7 @@ LineRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 0
+      m_Mode: 1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0

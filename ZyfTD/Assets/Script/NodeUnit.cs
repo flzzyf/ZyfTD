@@ -10,21 +10,30 @@ public class NodeUnit : MonoBehaviour {
 
     Color originalColor;
 
+    Animator animator;
+
     private void Start()
     {
         renderer = GetComponentInChildren<Renderer>();
         originalColor = renderer.material.color;
-    }
 
+        animator = GetComponent<Animator>();
+    }
+    //被点击
     IEnumerator OnMouseDown()
     {
         //非起点或终点
         if (!GameManager.instance.map.GetNode(transform.position).isStartOrEnd)
             toggleWalkable();
+        else
+        {
+            //为起点或终点
+            Debug.Log("起点");
+        }
 
         yield return new WaitForFixedUpdate();
     }
-
+    //切换能否通行 
     void toggleWalkable()
     {
         walkable = !walkable;
@@ -50,5 +59,15 @@ public class NodeUnit : MonoBehaviour {
             renderer.material.color = Color.black;
 
         }
+    }
+    //浮动动画
+    private void OnMouseEnter()
+    {
+        animator.SetBool("hovered", true);
+    }
+
+    private void OnMouseExit()
+    {
+        animator.SetBool("hovered", false);
     }
 }
