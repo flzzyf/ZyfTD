@@ -41,13 +41,13 @@ public class RoundManager : MonoBehaviour {
         GameManager.instance.gaming = true;
 
         //补充弹药
-        foreach (Transform item in GameManager.instance.turrets.transform)
+        foreach (Transform item in GameSetting.instance.turrets.transform)
         {
             item.gameObject.GetComponent<Turret>().Init();
 
         }
         //设置波次文本
-        GameManager.instance.roundText.text = "回合:" + (WaveSpawner.currentWaveIndex + 1);
+        GameSetting.instance.roundText.text = "回合:" + (WaveSpawner.currentWaveIndex + 1);
 
         WaveSpawner.instance.StartSpawn();
 
@@ -78,7 +78,7 @@ public class RoundManager : MonoBehaviour {
         {
             WaveSpawner.currentWaveIndex++;
 
-            Instantiate(turretPrefab, newTurret.transform.position, Quaternion.identity, GameManager.instance.turrets.transform);
+            Instantiate(turretPrefab, newTurret.transform.position, Quaternion.identity, GameSetting.instance.turrets.transform);
         }
 
         
@@ -86,11 +86,13 @@ public class RoundManager : MonoBehaviour {
 
     public void EndTheRound()
     {
+        RoundEnd();
+
         WaveSpawner.instance.StopAllCoroutines();
 
         WaveSpawner.enemiesAlive = 0;
 
-        foreach (Transform item in GameManager.instance.enemies.transform)
+        foreach (Transform item in GameSetting.instance.enemies.transform)
         {
             Destroy(item.gameObject);
         }

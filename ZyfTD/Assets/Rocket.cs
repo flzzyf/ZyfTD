@@ -13,7 +13,7 @@ public class Rocket : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == GameManager.enemyTag)
+        if(other.gameObject.tag == GameSetting.enemyTag)
         {
             other.gameObject.GetComponent<Unit>().TakeDamage(1);
         }

@@ -16,37 +16,24 @@ public class GameManager : MonoBehaviour {
         instance = this;
     }
     #endregion
-
-    [HideInInspector]
-    public Map map;
-
-    public List<Node> path;
+    
     //起点和终点
     public GameObject start;
     public GameObject end;
     //游戏中
     [HideInInspector]
     public bool gaming = false;
-    //敌人Tag
-    public static string enemyTag = "Enemy";
-    //路径长度文本
-    public Text pathLengthText;
-    //回合文本
-    public Text roundText;
-    //所有炮塔
-    public GameObject turrets;
 
-    public GameObject enemies;
+    Map map;
 
-    private void Start()
+    void Start()
     {
+        map = GameSetting.instance.map;   
         //随机设置起点和终点
         RandomStartAndEnd();
         //寻路
         UpdatePath();
 
-        //turrets = new GameObject("Turrets");
-        enemies = new GameObject("Enemies");
     }
 
     void Update()

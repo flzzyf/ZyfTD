@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AStar : MonoBehaviour {
 
-    Map map;
-
     #region Singleton
     [HideInInspector]
     public static AStar instance;
@@ -18,10 +16,14 @@ public class AStar : MonoBehaviour {
     }
     #endregion
 
-    private void Start()
+    Map map;
+
+    public bool walkable;
+
+    void Start()
     {
         map = GetComponent<Map>();
-        GameManager.instance.map = map;
+        GameSetting.instance.map = map;
 
     }
 
@@ -54,7 +56,9 @@ public class AStar : MonoBehaviour {
             //如果就是终点
             if(curNode == endNode)
             {
-                //Debug.Log("到达终点");
+                //可通行
+                walkable = true;
+                //生成路径
                 map.GeneratePath(startNode, endNode);
 
                 return;
@@ -85,9 +89,10 @@ public class AStar : MonoBehaviour {
             }
         }
         Debug.Log("无法通行");
+        walkable = false;
         map.PathHide();
-        GameManager.instance.pathLengthText.text = "完全无法通行";
-        GameManager.instance.pathLengthText.color = Color.red;
+        GameSetting.instance.pathLengthText.text = "完全无法通行";
+        GameSetting.instance.pathLengthText.color = Color.red;
 
     }
 

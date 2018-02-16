@@ -29,7 +29,7 @@ public class WaveSpawner : MonoBehaviour
     public void StartSpawn()
     {
         //设定起点
-        startPoint = GameManager.instance.path[0].pos;
+        startPoint = GameSetting.instance.path[0].pos;
 
         StopAllCoroutines();
         StartCoroutine(SpawnWave());
@@ -53,7 +53,7 @@ public class WaveSpawner : MonoBehaviour
         {
             for (int j = 0; j < currentWave.waveUnits[i].num; j++)
             {
-                GameObject unit = Instantiate(currentWave.waveUnits[i].unit, startPoint, Quaternion.identity, GameManager.instance.enemies.transform);
+                GameObject unit = Instantiate(currentWave.waveUnits[i].unit, startPoint, Quaternion.identity, GameSetting.instance.enemies.transform);
 
                 yield return new WaitForSeconds(currentWave.waveUnits[i].rate);
             }

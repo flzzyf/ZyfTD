@@ -13,9 +13,14 @@ public class Unit : MonoBehaviour {
 
     bool isDead = false;
 
+    Renderer renderer;
+
     private void Start()
     {
-        currentHp = maxHp;
+        renderer = gfx.GetComponent<Renderer>();
+
+        SetHp(maxHp);
+
     }
     //受到伤害
     public void TakeDamage(int _amount)
@@ -33,7 +38,8 @@ public class Unit : MonoBehaviour {
             }
             else
             {
-                //animator.Play("Enemy_Hit");
+                AppearanceModify();
+
             }
         }
     }
@@ -49,5 +55,18 @@ public class Unit : MonoBehaviour {
 
         WaveSpawner.enemiesAlive--;
         Debug.Log("目前存活敌人数：" + WaveSpawner.enemiesAlive);
+    }
+
+    //修改外形
+    public void AppearanceModify()
+    {
+        renderer.material.color = GameSetting.instance.color[currentHp - 1];
+    }
+
+    //设置HP
+    public void SetHp(int _amount)
+    {
+        currentHp = _amount;
+        AppearanceModify();
     }
 }

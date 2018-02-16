@@ -139,8 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  maxHp: 1
-  gfx: {fileID: 0}
+  maxHp: 3
+  gfx: {fileID: 1136826392745924}
 --- !u!135 &135749125241535278
 SphereCollider:
   m_ObjectHideFlags: 1

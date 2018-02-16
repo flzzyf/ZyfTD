@@ -16,8 +16,6 @@ public class Map : MonoBehaviour {
     //节点文件夹
     GameObject nodeParent;
 
-    public Color[] pathColor;
-
     //在搜索开始前执行
     private void Awake()
     {
@@ -99,23 +97,23 @@ public class Map : MonoBehaviour {
         //反转路径然后生成显示路径
         path.Reverse();
 
-        GameManager.instance.path = path;
+        GameSetting.instance.path = path;
         //map.updatePath(path);
 
         PathShow(path);
         //路径长度提示文本
-        GameManager.instance.pathLengthText.text = "路径长度:" + (path.Count - 1);
-        GameManager.instance.pathLengthText.color = Color.white;
+        GameSetting.instance.pathLengthText.text = "路径长度:" + (path.Count - 1);
+        GameSetting.instance.pathLengthText.color = Color.white;
 
     }
 
     //反转路径
     public void ReversePath()
     {
-        GameManager.instance.path.Reverse();
+        GameSetting.instance.path.Reverse();
 
         //起点和终点对换
-        List<Node> path = GameManager.instance.path;
+        List<Node> path = GameSetting.instance.path;
         path[0].isStartOrEnd = 1;
         path[path.Count - 1].isStartOrEnd = 2;
     }
@@ -131,7 +129,6 @@ public class Map : MonoBehaviour {
 
         line.positionCount = lines.Count;
         //设置路径点
-        //line.SetPosition(0, GameManager.instance.start.transform.position);
         for (int i = 0; i < lines.Count; i++)
         {
             line.SetPosition(i, lines[i].pos);
@@ -139,28 +136,28 @@ public class Map : MonoBehaviour {
         //设置路径颜色按长度变化
         if(lines.Count < 13)
         {
-            line.startColor = pathColor[0];
-            line.endColor = pathColor[0];
+            line.startColor = GameSetting.instance.color[0];
+            line.endColor = GameSetting.instance.color[0];
         }
         else if (lines.Count == 13)
         {
-            line.startColor = pathColor[1];
-            line.endColor = pathColor[1];
+            line.startColor = GameSetting.instance.color[1];
+            line.endColor = GameSetting.instance.color[1];
         }
         else if (lines.Count == 14)
         {
-            line.startColor = pathColor[2];
-            line.endColor = pathColor[2];
+            line.startColor = GameSetting.instance.color[2];
+            line.endColor = GameSetting.instance.color[2];
         }
         else if (lines.Count == 15)
         {
-            line.startColor = pathColor[3];
-            line.endColor = pathColor[3];
+            line.startColor = GameSetting.instance.color[3];
+            line.endColor = GameSetting.instance.color[3];
         }
         else if (lines.Count == 16)
         {
-            line.startColor = pathColor[4];
-            line.endColor = pathColor[4];
+            line.startColor = GameSetting.instance.color[4];
+            line.endColor = GameSetting.instance.color[4];
         }
 
 

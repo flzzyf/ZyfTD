@@ -23,15 +23,34 @@ public class NodeUnit : MonoBehaviour {
     IEnumerator OnMouseDown()
     {
         //非起点或终点
-        if (GameManager.instance.map.GetNode(transform.position).isStartOrEnd == 0)
+        if (GameSetting.instance.map.GetNode(transform.position).isStartOrEnd == 0)
             toggleWalkable();
         else
         {
-            //终点则反转路径
-            if(GameManager.instance.map.GetNode(transform.position).isStartOrEnd == 2)
-                GameManager.instance.map.ReversePath();
+            if (GameManager.instance.gaming)
+            {
+                //游戏中
+                RoundManager.instance.EndTheRound();
+            }
+            else
+            {
+                //还没开始
+                if (AStar.instance.walkable)
+                {
+                    //可通行
+                    //终点则反转路径
+                    if (GameSetting.instance.map.GetNode(transform.position).isStartOrEnd == 2)
+                        GameSetting.instance.map.ReversePath();
 
-            RoundManager.instance.RoundStart();
+                    RoundManager.instance.RoundStart();
+                }
+                else
+                {
+                    Debug.LogError("无法通行");
+                }
+                
+            }
+            
         }
 
         yield return new WaitForFixedUpdate();
@@ -49,7 +68,7 @@ public class NodeUnit : MonoBehaviour {
     void setWalkable(bool _walkable)
     {
         //设置节点可通行属性
-        GameManager.instance.map.GetNode(transform.position).walkable = _walkable;
+        GameSetting.instance.map.GetNode(transform.position).walkable = _walkable;
         //变色
         if (_walkable)
         {

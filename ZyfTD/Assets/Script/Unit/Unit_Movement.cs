@@ -17,7 +17,7 @@ public class Unit_Movement : MonoBehaviour
     {
         unit = GetComponent<Unit>();
 
-        path = GameManager.instance.path;
+        path = GameSetting.instance.path;
 
         GetNextWayPoint();
     }
