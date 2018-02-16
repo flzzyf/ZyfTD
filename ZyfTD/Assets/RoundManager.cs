@@ -46,6 +46,8 @@ public class RoundManager : MonoBehaviour {
             item.gameObject.GetComponent<Turret>().Init();
 
         }
+        //设置波次文本
+        GameManager.instance.roundText.text = "回合:" + (WaveSpawner.currentWaveIndex + 1);
 
         WaveSpawner.instance.StartSpawn();
 

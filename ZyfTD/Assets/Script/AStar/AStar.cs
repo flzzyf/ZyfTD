@@ -86,8 +86,8 @@ public class AStar : MonoBehaviour {
         }
         Debug.Log("无法通行");
         map.PathHide();
-        GameManager.instance.PathLengthText.text = "完全无法通行";
-        GameManager.instance.PathLengthText.color = Color.red;
+        GameManager.instance.pathLengthText.text = "完全无法通行";
+        GameManager.instance.pathLengthText.color = Color.red;
 
     }
 

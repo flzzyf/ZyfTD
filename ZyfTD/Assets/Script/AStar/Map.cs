@@ -104,8 +104,8 @@ public class Map : MonoBehaviour {
 
         PathShow(path);
         //路径长度提示文本
-        GameManager.instance.PathLengthText.text = "路径长度:" + (path.Count - 1);
-        GameManager.instance.PathLengthText.color = Color.white;
+        GameManager.instance.pathLengthText.text = "路径长度:" + (path.Count - 1);
+        GameManager.instance.pathLengthText.color = Color.white;
 
     }
 

@@ -30,8 +30,10 @@ public class GameManager : MonoBehaviour {
     //敌人Tag
     public static string enemyTag = "Enemy";
     //路径长度文本
-    public Text PathLengthText;
-
+    public Text pathLengthText;
+    //回合文本
+    public Text roundText;
+    //所有炮塔
     public GameObject turrets;
 
     public GameObject enemies;
