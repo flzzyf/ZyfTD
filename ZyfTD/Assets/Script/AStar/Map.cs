@@ -154,7 +154,7 @@ public class Map : MonoBehaviour {
             line.startColor = GameSetting.instance.color[3];
             line.endColor = GameSetting.instance.color[3];
         }
-        else if (lines.Count == 16)
+        else if (lines.Count >= 16)
         {
             line.startColor = GameSetting.instance.color[4];
             line.endColor = GameSetting.instance.color[4];
