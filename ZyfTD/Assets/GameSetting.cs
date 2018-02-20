@@ -41,6 +41,10 @@ public class GameSetting : MonoBehaviour {
     //颜色
     public Color[] color = new Color[5];
 
+    //无视鼠标层
+    public LayerMask ignoreRaycast;
+
+
     void Start()
     {
         enemies = new GameObject("Enemies");
