@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour {
 
     void Start()
     {
+        start = new GameObject("Start");
+        end = new GameObject("End");
+
         map = GameSetting.instance.map;   
         //随机设置起点和终点
         RandomStartAndEnd();
