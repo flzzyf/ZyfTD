@@ -20,6 +20,8 @@ public class AStar : MonoBehaviour {
 
     public bool walkable;
 
+    float time;
+
     void Start()
     {
         map = GetComponent<Map>();
@@ -27,9 +29,23 @@ public class AStar : MonoBehaviour {
 
     }
 
+    IEnumerator Counter()
+    {
+        time = 0;
+        while (true)
+        {
+            time += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+
+        }
+
+    }
+
     //寻找同路
     public void FindPath(Vector3 _startPos, Vector3 _endPos)
     {
+        StartCoroutine(Counter());
+
         Node startNode = map.GetNode(_startPos);
         Node endNode = map.GetNode(_endPos);
         //开集和闭集
@@ -56,6 +72,8 @@ public class AStar : MonoBehaviour {
             //如果就是终点
             if(curNode == endNode)
             {
+                StopAllCoroutines();
+                Debug.Log("寻找路径时间：" + (time));
                 //可通行
                 walkable = true;
                 //生成路径
