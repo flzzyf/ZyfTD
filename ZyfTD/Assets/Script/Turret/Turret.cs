@@ -119,4 +119,5 @@ public class Turret : MonoBehaviour {
         //鼠标起
         gameObject.layer = formerLayer;
     }
+
 }
