@@ -26,6 +26,12 @@ public class GameManager : MonoBehaviour {
 
     Map map;
 
+    public GameObject draggingTurret;
+
+    public GameObject hoveringNode;
+
+    public int turretIndex;
+
     void Start()
     {
         start = new GameObject("Start");
@@ -44,6 +50,22 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //UpdatePath();
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            Debug.Log("鼠标起");
+            if(draggingTurret != null && hoveringNode != null)
+            {
+                Debug.Log("放置");
+
+                hoveringNode.GetComponent<NodeUnit>().turret = draggingTurret;
+
+                draggingTurret.transform.position = hoveringNode.transform.position;
+
+            }
+
+            draggingTurret = null;
         }
     }
 

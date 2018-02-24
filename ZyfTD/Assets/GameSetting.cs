@@ -43,7 +43,9 @@ public class GameSetting : MonoBehaviour {
 
     //无视鼠标层
     public LayerMask ignoreRaycast;
-
+    
+    //炮塔种类
+    public List<GameObject> turretPrefab;
 
     void Start()
     {

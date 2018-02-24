@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class NodeUnit : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class NodeUnit : MonoBehaviour {
     Color originalColor;
 
     Animator animator;
+
+    public GameObject turret;
 
     private void Start()
     {
@@ -82,14 +85,57 @@ public class NodeUnit : MonoBehaviour {
 
         }
     }
-    //浮动动画
+    //炮塔占位符
+    GameObject placeholder;
+
+    //鼠标进入
     private void OnMouseEnter()
     {
         animator.SetBool("hovered", true);
+
+        GameManager.instance.hoveringNode = gameObject;
+        //生成炮塔的放置符
+        if (GameManager.instance.draggingTurret != null)
+        {
+            GenerateTurretPlaceholder(GameManager.instance.draggingTurret);
+        }
     }
 
     private void OnMouseExit()
     {
         animator.SetBool("hovered", false);
+
+        GameManager.instance.hoveringNode = null;
+
+        //清除放置符
+        if (placeholder != null)
+        {
+            Destroy(placeholder);
+        }
+    }
+
+    //生成炮塔的放置符
+    void GenerateTurretPlaceholder(GameObject _turret)
+    {
+        placeholder = Instantiate(_turret, transform.position, Quaternion.identity);
+
+        placeholder.transform.Translate(0, -0.15f, 0);
+        //改颜色
+        foreach (var item in placeholder.GetComponentsInChildren<Renderer>())
+        {
+            item.material.color = Color.gray;
+        }
+
+
+        //禁用炮塔脚本
+        placeholder.GetComponent<Turret>().enabled = false;
+    }
+
+    //生成炮塔
+    public void GenerateTurret(GameObject _turret)
+    {
+        turret = Instantiate(_turret, transform.position, Quaternion.identity);
+
+        turret.layer = 0;
     }
 }

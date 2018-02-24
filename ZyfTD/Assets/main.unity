@@ -686,7 +686,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4312829129574872, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4312829129574872, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1193,7 +1193,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4312829129574872, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4312829129574872, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1222,7 +1222,7 @@ Prefab:
     - target: {fileID: 114329531222598034, guid: c3cc7cb3c9cf1b249b65766c81945f8f,
         type: 2}
       propertyPath: range
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114363739652567424, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
@@ -1241,7 +1241,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4312829129574872, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4312829129574872, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1558,6 +1558,9 @@ MonoBehaviour:
   start: {fileID: 0}
   end: {fileID: 0}
   gaming: 0
+  draggingTurret: {fileID: 0}
+  hoveringNode: {fileID: 0}
+  turretIndex: 0
 --- !u!4 &2013957844
 Transform:
   m_ObjectHideFlags: 0
@@ -1750,6 +1753,8 @@ MonoBehaviour:
   ignoreRaycast:
     serializedVersion: 2
     m_Bits: 2
+  turretPrefab:
+  - {fileID: 1335126240226622, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
 --- !u!1 &2039824685
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Turret : MonoBehaviour {
     [Header("攻击范围")]
@@ -17,7 +18,6 @@ public class Turret : MonoBehaviour {
 
     public int maxXmmoCount = 1;
     int currentAmmoCount;
-
 
     //回合初始化
     public void Init()
@@ -100,8 +100,12 @@ public class Turret : MonoBehaviour {
         //获取物体与鼠标的位移
         Vector3 offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, ScreenSpace.z));
 
+        //修改Layer来不被鼠标高亮
         LayerMask formerLayer = gameObject.layer;
         gameObject.layer = GameSetting.instance.ignoreRaycast;
+
+        //保存为被拖曳物体
+        GameManager.instance.draggingTurret = gameObject;
 
         //while还按着鼠标
         while (Input.GetMouseButton(0))
@@ -115,9 +119,15 @@ public class Turret : MonoBehaviour {
 
             yield return new WaitForFixedUpdate();
         }
+        yield return new WaitForFixedUpdate();
 
         //鼠标起
+        //修改回原本Layer
         gameObject.layer = formerLayer;
+
+        //清空被拖曳物体
+        //GameManager.instance.draggingTurret = null;
+
     }
 
 }
