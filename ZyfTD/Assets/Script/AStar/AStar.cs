@@ -109,7 +109,7 @@ public class AStar : MonoBehaviour {
         Debug.Log("无法通行");
         walkable = false;
         map.PathHide();
-        GameSetting.instance.pathLengthText.text = "完全无法通行";
+        GameSetting.instance.pathLengthText.text = "Impassable!";
         GameSetting.instance.pathLengthText.color = Color.red;
 
     }

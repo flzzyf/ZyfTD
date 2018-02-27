@@ -13,6 +13,8 @@ public class GameSetting : MonoBehaviour {
         if (instance != null)
             Destroy(this);
         instance = this;
+
+        Init();
     }
     #endregion
 
@@ -47,9 +49,10 @@ public class GameSetting : MonoBehaviour {
     //炮塔种类
     public List<GameObject> turretPrefab;
 
-    void Start()
+    void Init()
     {
         enemies = new GameObject("Enemies");
+        turrets = new GameObject("Turrets");
 
     }
 }

@@ -159,4 +159,5 @@ public class GameManager : MonoBehaviour {
     {
         map.nodeUnits[_x, _z].GetComponent<NodeUnit>().GenerateTurret(_turretPrefab);
     }
+
 }
