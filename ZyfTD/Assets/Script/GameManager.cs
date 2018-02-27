@@ -47,15 +47,10 @@ public class GameManager : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //UpdatePath();
-        }
-
         if (Input.GetMouseButtonUp(0))
         {
             Debug.Log("鼠标起");
-            if(draggingTurret != null && hoveringNode != null)
+            if(draggingTurret != null && hoveringNode != null && hoveringNode.GetComponent<NodeUnit>().turret == null)
             {
                 Debug.Log("放置");
 

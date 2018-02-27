@@ -7,7 +7,7 @@ public class Turret : MonoBehaviour {
     [Header("攻击范围")]
     public float range = 3;
 
-    public float fireRate = 100f;
+    public float fireRate = 1f;
     private float fireCountdown = 0f;
 
     public float rotSpeed = 300f;
@@ -29,6 +29,12 @@ public class Turret : MonoBehaviour {
         if (currentAmmoCount <= 0)
             return;
 
+        //武器冷却
+        if(fireCountdown > 0)
+        {
+            fireCountdown -= Time.deltaTime;
+        }
+
         if(GetTargets().Count > 0)
         {
             if(target == null)
@@ -40,6 +46,8 @@ public class Turret : MonoBehaviour {
                 if (canAttack())
                 {
                     currentAmmoCount--;
+                    fireCountdown = fireRate;
+
                     Attack(target);
                 }
             }

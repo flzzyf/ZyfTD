@@ -94,11 +94,16 @@ public class NodeUnit : MonoBehaviour {
         animator.SetBool("hovered", true);
 
         GameManager.instance.hoveringNode = gameObject;
-        //生成炮塔的放置符
-        if (GameManager.instance.draggingTurret != null)
+
+        if(turret == null)
         {
-            GenerateTurretPlaceholder(GameManager.instance.draggingTurret);
+            //生成炮塔的放置符
+            if (GameManager.instance.draggingTurret != null)
+            {
+                GenerateTurretPlaceholder(GameManager.instance.draggingTurret);
+            }
         }
+
     }
 
     private void OnMouseExit()

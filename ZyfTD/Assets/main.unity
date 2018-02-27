@@ -721,6 +721,11 @@ Prefab:
       propertyPath: m_Name
       value: Turret (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114329531222598034, guid: c3cc7cb3c9cf1b249b65766c81945f8f,
+        type: 2}
+      propertyPath: maxXmmoCount
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
   m_IsPrefabParent: 0
@@ -829,28 +834,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &852420693 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1335126240226622, guid: c3cc7cb3c9cf1b249b65766c81945f8f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1389639035}
---- !u!95 &852420697
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 852420693}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d4c3a7c3bb04c8742b967e8feb25ebe7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!4 &940825145 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4312829129574872, guid: c3cc7cb3c9cf1b249b65766c81945f8f,
@@ -1222,10 +1205,14 @@ Prefab:
     - target: {fileID: 114329531222598034, guid: c3cc7cb3c9cf1b249b65766c81945f8f,
         type: 2}
       propertyPath: range
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114363739652567424, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
+    - target: {fileID: 114329531222598034, guid: c3cc7cb3c9cf1b249b65766c81945f8f,
+        type: 2}
+      propertyPath: maxXmmoCount
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1474216470
@@ -1270,6 +1257,16 @@ Prefab:
     - target: {fileID: 1335126240226622, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
       propertyPath: m_Name
       value: Turret (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114329531222598034, guid: c3cc7cb3c9cf1b249b65766c81945f8f,
+        type: 2}
+      propertyPath: maxXmmoCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114329531222598034, guid: c3cc7cb3c9cf1b249b65766c81945f8f,
+        type: 2}
+      propertyPath: range
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
