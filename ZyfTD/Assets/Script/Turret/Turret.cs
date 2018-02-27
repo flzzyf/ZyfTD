@@ -19,6 +19,8 @@ public class Turret : MonoBehaviour {
     public int maxXmmoCount = 1;
     int currentAmmoCount;
 
+    public GameObject currentNode;
+
     //回合初始化
     public void Init()
     {
@@ -136,6 +138,25 @@ public class Turret : MonoBehaviour {
         //清空被拖曳物体
         //GameManager.instance.draggingTurret = null;
 
+    }
+
+    //节点设置
+    public void SetNode(GameObject _node)
+    {
+        currentNode = _node;
+    }
+
+    public void RemoveNode()
+    {
+        currentNode = null;
+
+    }
+
+    public void RemoveLastNode()
+    {
+        currentNode.GetComponent<NodeUnit>().turret = null;
+
+        currentNode = null;
     }
 
 }

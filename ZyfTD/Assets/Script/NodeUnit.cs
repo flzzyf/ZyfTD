@@ -140,7 +140,28 @@ public class NodeUnit : MonoBehaviour {
     public void GenerateTurret(GameObject _turret)
     {
         turret = Instantiate(_turret, transform.position, Quaternion.identity);
+        turret.transform.parent = GameSetting.instance.turrets.transform;
 
-        turret.layer = 0;
+        SetTurret(turret);
+
+        //层级重置
+        if (_turret.layer != 0)
+            turret.layer = 0;
+    }
+    //设置炮塔
+    public void SetTurret(GameObject _turret)
+    {
+        turret = _turret;
+
+        turret.GetComponent<Turret>().SetNode(gameObject);
+
+    }
+
+    //移除炮塔
+    void RemoveTurret()
+    {
+        turret.GetComponent<Turret>().RemoveNode();
+
+        turret = null;
     }
 }

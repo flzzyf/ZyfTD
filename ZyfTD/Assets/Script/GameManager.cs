@@ -32,16 +32,23 @@ public class GameManager : MonoBehaviour {
 
     public int turretIndex;
 
+    GameSetting gameSetting;
+
     void Start()
     {
         start = new GameObject("Start");
         end = new GameObject("End");
 
-        map = GameSetting.instance.map;   
+        map = GameSetting.instance.map;
+
+        gameSetting = GetComponent<GameSetting>();
         //随机设置起点和终点
         RandomStartAndEnd();
         //寻路
         UpdatePath();
+
+        GenerateTurret(2, 2, gameSetting.turretPrefab[0]);
+        GenerateTurret(1, 4, gameSetting.turretPrefab[0]);
 
     }
 
@@ -50,17 +57,27 @@ public class GameManager : MonoBehaviour {
         if (Input.GetMouseButtonUp(0))
         {
             Debug.Log("鼠标起");
-            if(draggingTurret != null && hoveringNode != null && hoveringNode.GetComponent<NodeUnit>().turret == null)
+            //正在拖曳炮塔
+            if(draggingTurret != null)
             {
-                Debug.Log("放置");
+                //高亮了一个节点
+                if(hoveringNode != null)
+                {
+                    //该节点没有炮塔
+                    if (hoveringNode.GetComponent<NodeUnit>().turret == null)
+                    {
+                        Debug.Log("放置");
 
-                hoveringNode.GetComponent<NodeUnit>().turret = draggingTurret;
+                        draggingTurret.GetComponent<Turret>().RemoveLastNode();
 
-                draggingTurret.transform.position = hoveringNode.transform.position;
-
+                        hoveringNode.GetComponent<NodeUnit>().SetTurret(draggingTurret);
+                    }
+                   
+                }
+                draggingTurret.transform.position = draggingTurret.GetComponent<Turret>().currentNode.transform.position;
+                draggingTurret = null;
             }
 
-            draggingTurret = null;
         }
     }
 
@@ -135,5 +152,11 @@ public class GameManager : MonoBehaviour {
     {
         //Debug.Log("restart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    //创建炮塔
+    void GenerateTurret(int _x, int _z, GameObject _turretPrefab)
+    {
+        map.nodeUnits[_x, _z].GetComponent<NodeUnit>().GenerateTurret(_turretPrefab);
     }
 }
