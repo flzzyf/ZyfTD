@@ -141,6 +141,7 @@ MonoBehaviour:
   speed: 3
   maxHp: 1
   gfx: {fileID: 1136826392745924}
+  fx_Death: {fileID: 1445780145645166, guid: 34a8f1ef78c0d684eabe1b42cfa97aab, type: 2}
 --- !u!135 &135749125241535278
 SphereCollider:
   m_ObjectHideFlags: 1

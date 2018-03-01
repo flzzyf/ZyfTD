@@ -15,6 +15,8 @@ public class Unit : MonoBehaviour {
 
     Renderer renderer;
 
+    public GameObject fx_Death;
+
     private void Start()
     {
         renderer = gfx.GetComponent<Renderer>();
@@ -50,6 +52,9 @@ public class Unit : MonoBehaviour {
             return;
 
         isDead = true;
+
+        GameObject fx = Instantiate(fx_Death, transform.position, transform.rotation);
+        Destroy(fx, 3);
 
         Destroy(gameObject);
 
