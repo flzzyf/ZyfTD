@@ -16,6 +16,8 @@ public class Map : MonoBehaviour {
     //节点文件夹
     GameObject nodeParent;
 
+    public List<GameObject> nodeUnitList;
+
     //在搜索开始前执行
     private void Awake()
     {
@@ -31,10 +33,12 @@ public class Map : MonoBehaviour {
                 //生成节点
                 Node node = new Node(x, z);
                 nodes[x, z] = node;
-                //生成墙
+                //生成节点单位
                 GameObject obj = Instantiate(nodePrefab, pos, Quaternion.identity);
                 obj.transform.SetParent(nodeParent.transform);
                 nodeUnits[x, z] = obj;
+
+                nodeUnitList.Add(obj);
                 
             }
         }

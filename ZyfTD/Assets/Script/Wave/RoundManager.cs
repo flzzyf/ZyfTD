@@ -15,9 +15,6 @@ public class RoundManager : MonoBehaviour {
     }
     #endregion
 
-    public GameObject turretPrefab;
-    public GameObject newTurret;
-
     //还在生成敌人
     bool spawningWave = false;
 
@@ -78,7 +75,8 @@ public class RoundManager : MonoBehaviour {
         {
             WaveSpawner.currentWaveIndex++;
 
-            Instantiate(turretPrefab, newTurret.transform.position, Quaternion.identity, GameSetting.instance.turrets.transform);
+            //生成新炮塔
+            GameManager.instance.GenerateTurretInRandomPos();
         }
 
         

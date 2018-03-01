@@ -213,8 +213,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 96.736115, y: -37.30002}
-  m_SizeDelta: {x: 100.7, y: 44.6}
+  m_AnchoredPosition: {x: 127.6, y: -37.30002}
+  m_SizeDelta: {x: 126, y: 44.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &285477481
 MonoBehaviour:
@@ -1183,7 +1183,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -56.088894, y: -37.3}
+  m_AnchoredPosition: {x: -37.82501, y: -37.3}
   m_SizeDelta: {x: 204.95, y: 44.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1608870477
@@ -1218,7 +1218,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8DEF\u5F84\u957F\u5EA6:"
+  m_Text: "\u5F53\u524D\u8DEF\u5F84\u957F\u5EA6:"
 --- !u!222 &1608870478
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1455,6 +1455,7 @@ MonoBehaviour:
   mapSizeX: 5
   mapSizeY: 5
   nodePrefab: {fileID: 1126241702129320, guid: 6d569233cb358fc428c25dbee3412492, type: 2}
+  nodeUnitList: []
   line: {fileID: 2013957847}
 --- !u!114 &2013957846
 MonoBehaviour:
@@ -1470,15 +1471,15 @@ MonoBehaviour:
   wave:
   - waveUnits:
     - unit: {fileID: 1987658663008954, guid: 1eaca1eb3cf3d284e9327b4ade6779c7, type: 2}
-      num: 3
+      num: 2
       rate: 0.7
   - waveUnits:
     - unit: {fileID: 1987658663008954, guid: 1eaca1eb3cf3d284e9327b4ade6779c7, type: 2}
-      num: 6
+      num: 5
       rate: 0.7
   - waveUnits:
     - unit: {fileID: 1987658663008954, guid: 1eaca1eb3cf3d284e9327b4ade6779c7, type: 2}
-      num: 9
+      num: 7
       rate: 0.7
 --- !u!120 &2013957847
 LineRenderer:
@@ -1579,9 +1580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5b2d371a2851a4b8a06b72d3186763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretPrefab: {fileID: 1335126240226622, guid: c3cc7cb3c9cf1b249b65766c81945f8f,
-    type: 2}
-  newTurret: {fileID: 481818012}
 --- !u!114 &2013957849
 MonoBehaviour:
   m_ObjectHideFlags: 0

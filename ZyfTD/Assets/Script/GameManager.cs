@@ -48,12 +48,17 @@ public class GameManager : MonoBehaviour {
         UpdatePath();
 
         GenerateTurret(2, 2, gameSetting.turretPrefab[0]);
-        GenerateTurret(1, 4, gameSetting.turretPrefab[0]);
+        //GenerateTurret(1, 4, gameSetting.turretPrefab[0]);
 
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GenerateTurretInRandomPos();
+        }
+
         if (Input.GetMouseButtonUp(0))
         {
             Debug.Log("鼠标起");
@@ -158,6 +163,38 @@ public class GameManager : MonoBehaviour {
     void GenerateTurret(int _x, int _z, GameObject _turretPrefab)
     {
         map.nodeUnits[_x, _z].GetComponent<NodeUnit>().GenerateTurret(_turretPrefab);
+    }
+    //创建炮塔（直接输入节点
+    void GenerateTurret(GameObject _node, GameObject _turretPrefab)
+    {
+        _node.GetComponent<NodeUnit>().GenerateTurret(_turretPrefab);
+    }
+
+    //获取空节点
+    List<GameObject> GetIdleNodes()
+    {
+        List<GameObject> nodes = new List<GameObject>(map.nodeUnitList);
+
+        for (int i = 0; i < nodes.Count; i++)
+        {
+            if (nodes[i].GetComponent<NodeUnit>().turret != null)
+            {
+                //已有炮塔，移出list
+                nodes.Remove(nodes[i]);
+                //计数减1
+                i--;
+            }
+
+        }
+
+        return nodes;
+    }
+
+    //在随机空位置生成一个炮塔
+    public void GenerateTurretInRandomPos()
+    {
+        List<GameObject> idleNodes = GetIdleNodes();
+        GenerateTurret(idleNodes[Random.Range(0, idleNodes.Count - 1)], gameSetting.turretPrefab[0]);
     }
 
 }
