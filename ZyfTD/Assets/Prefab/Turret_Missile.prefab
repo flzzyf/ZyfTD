@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4072ff3747cb66c469d1f394eea20a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1
+  range: 0.5
   fireRate: 1
   rotSpeed: 3
   rocketPrefab: {fileID: 1750722286452196, guid: a0296820002483145af38bd30a92e3c3,
@@ -245,3 +245,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6f3fcf3dce0e343a2b854f56528204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: "\u98DE\u5F39\u9677\u9631"
+  desc: "\u5728\u88AB\u654C\u4EBA\u8E29\u4E2D\u540E\uFF0C\u53D1\u5C04\u4E00\u679A\u76F4\u7EBF\u7A7F\u900F\u98DE\u5F39\u3002"

@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("鼠标起");
             //正在拖曳炮塔
             if(draggingTurret != null)
             {
@@ -71,8 +70,6 @@ public class GameManager : MonoBehaviour {
                     //该节点没有炮塔
                     if (hoveringNode.GetComponent<NodeUnit>().turret == null)
                     {
-                        Debug.Log("放置");
-
                         draggingTurret.GetComponent<Turret>().RemoveLastNode();
 
                         hoveringNode.GetComponent<NodeUnit>().SetTurret(draggingTurret);
@@ -95,6 +92,8 @@ public class GameManager : MonoBehaviour {
         start.transform.position = node.pos;
         SetStartOrEndNode(start, 1, Color.red);
 
+        SetDescText(map.GetNodeUnit(node.pos), "起始点", "点击此节点以将其设为起点，并开始该回合。");
+
         //设置终点
         nodes = GetPlainNode();
         //不符合条件的节点列表
@@ -115,6 +114,8 @@ public class GameManager : MonoBehaviour {
         node = nodes[Random.Range(0, nodes.Count)];
         end.transform.position = node.pos;
         SetStartOrEndNode(end, 2, Color.cyan);
+
+        SetDescText(map.GetNodeUnit(node.pos), "起始点", "点击此节点以将其设为起点，并开始该回合。");
 
     }
 
@@ -197,4 +198,13 @@ public class GameManager : MonoBehaviour {
         GenerateTurret(idleNodes[Random.Range(0, idleNodes.Count - 1)], gameSetting.turretPrefab[0]);
     }
 
+    //设置提示文本
+    void SetDescText(GameObject _go, string _title, string _desc)
+    {
+        _go.AddComponent(typeof(DescribableObject));
+        DescribableObject describable = _go.GetComponent<DescribableObject>();
+
+        describable.title = _title;
+        describable.desc = _desc;
+    }
 }

@@ -39,6 +39,8 @@ public class GameSetting : MonoBehaviour {
 
     //信息面板
     public GameObject infoUI;
+    public Text infoUI_title;
+    public Text infoUI_desc;
 
     //颜色
     public Color[] color = new Color[5];
