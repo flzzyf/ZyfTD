@@ -73,7 +73,7 @@ public class AStar : MonoBehaviour {
             if(curNode == endNode)
             {
                 StopAllCoroutines();
-                Debug.Log("寻找路径时间：" + (time));
+                //Debug.Log("寻找路径时间：" + (time));
                 //可通行
                 walkable = true;
                 //生成路径

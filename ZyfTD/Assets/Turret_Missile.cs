@@ -13,7 +13,7 @@ public class Turret_Missile : Turret {
         Init();
 	}
 	
-	void Update ()
+	new void Update ()
     {
         base.Update();
 
