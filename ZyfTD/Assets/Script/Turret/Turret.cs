@@ -4,42 +4,44 @@ using UnityEngine;
 using UnityEditor;
 
 public class Turret : MonoBehaviour {
-    [Header("攻击范围")]
+    [Header("常规塔属性")]
     public float range = 3;
 
     public float fireRate = 1f;
-    private float fireCountdown = 0f;
+    protected float fireCountdown = 0f;
 
     public float rotSpeed = 300f;
 
-    GameObject target;
+    protected GameObject target;
 
-    public GameObject rocketPrefab;
 
     public int maxXmmoCount = 1;
-    int currentAmmoCount;
+    protected int currentAmmoCount;
 
+    [HideInInspector]
     public GameObject currentNode;
 
+    private void Start()
+    {
+        Init();
+    }
+
     //回合初始化
-    public void Init()
+    virtual public void Init()
     {
         currentAmmoCount = maxXmmoCount;
     }
 
-    void Update () {
+    public void Update ()
+    {
         if (currentAmmoCount <= 0)
             return;
 
-        //武器冷却
-        if(fireCountdown > 0)
-        {
-            fireCountdown -= Time.deltaTime;
-        }
+        ColdDown();
 
-        if(GetTargets().Count > 0)
+        if (GetTargets().Count > 0)
         {
-            if(target == null)
+            if (target == null)
                 target = GetTargets()[0];
             else
             {
@@ -50,27 +52,38 @@ public class Turret : MonoBehaviour {
                     currentAmmoCount--;
                     fireCountdown = fireRate;
 
-                    Attack(target);
+                    Attack();
                 }
             }
 
         }
+
     }
 
-    public void Attack(GameObject _target)
+    void ColdDown()
     {
+        //武器冷却
+        if (fireCountdown > 0)
+        {
+            fireCountdown -= Time.deltaTime;
+        }
+    }
+
+    public virtual void Attack()
+    {
+        Debug.Log("att1");
+
         //创建特效
         //GameObject fx = Instantiate(effect_Launch, transform.position, Quaternion.identity);
         //Destroy(fx, 0.5f);
 
         //_target.GetComponent<Unit>().TakeDamage(1);
-        GameObject rocket = Instantiate(rocketPrefab, transform.position, transform.rotation);
 
         //回合伤害量增加
         //roundDamage++;
     }
 
-    List<GameObject> GetTargets()
+    protected List<GameObject> GetTargets()
     {
         List<GameObject> targets = new List<GameObject>();
 
@@ -86,7 +99,7 @@ public class Turret : MonoBehaviour {
         return targets;
     }
     //朝向目标点
-    void AimTarget(Vector3 _target)
+    protected void AimTarget(Vector3 _target)
     {
         //方向
         Vector3 direction = _target - transform.position;
@@ -97,7 +110,7 @@ public class Turret : MonoBehaviour {
         transform.forward = direction;
     }
 
-    bool canAttack()
+    protected bool canAttack()
     {
         return fireCountdown <= 0;
     }

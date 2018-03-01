@@ -51,6 +51,8 @@ public class GameSetting : MonoBehaviour {
     //炮塔种类
     public List<GameObject> turretPrefab;
 
+    public GameObject gameWinUI;
+
     void Init()
     {
         enemies = new GameObject("Enemies");

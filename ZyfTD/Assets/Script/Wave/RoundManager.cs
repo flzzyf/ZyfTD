@@ -37,12 +37,7 @@ public class RoundManager : MonoBehaviour {
         //Debug.Log("回合开始");
         GameManager.instance.gaming = true;
 
-        //补充弹药
-        foreach (Transform item in GameSetting.instance.turrets.transform)
-        {
-            item.gameObject.GetComponent<Turret>().Init();
 
-        }
         //设置波次文本
         GameSetting.instance.roundText.text = (WaveSpawner.currentWaveIndex + 1).ToString();
 
@@ -55,6 +50,13 @@ public class RoundManager : MonoBehaviour {
     {
         Debug.Log("回合结束");
         GameManager.instance.gaming = false;
+
+        //补充弹药
+        foreach (Transform item in GameSetting.instance.turrets.transform)
+        {
+            item.gameObject.GetComponent<Turret>().Init();
+
+        }
 
     }
 
@@ -69,6 +71,8 @@ public class RoundManager : MonoBehaviour {
         if(WaveSpawner.currentWaveIndex + 1 == WaveSpawner.instance.wave.Length)
         {
             Debug.Log("已经完成所有波次！");
+
+            GameSetting.instance.gameWinUI.SetActive(true);
 
         }
         else
