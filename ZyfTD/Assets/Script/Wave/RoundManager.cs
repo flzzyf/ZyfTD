@@ -80,7 +80,7 @@ public class RoundManager : MonoBehaviour {
             WaveSpawner.currentWaveIndex++;
 
             //生成新炮塔
-            GameManager.instance.GenerateTurretInRandomPos();
+            GameManager.instance.GenerateTurretInRandomPos(Random.Range(0, GameSetting.instance.turretPrefab.Count));
         }
 
         

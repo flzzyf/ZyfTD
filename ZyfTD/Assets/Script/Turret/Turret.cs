@@ -13,12 +13,8 @@ public class Turret : MonoBehaviour {
 
     protected GameObject target;
 
-
-    public int maxXmmoCount = 1;
+    public int maxAmmoCount = 1;
     protected int currentAmmoCount;
-
-    [HideInInspector]
-    public GameObject currentNode;
 
     private void Start()
     {
@@ -28,7 +24,7 @@ public class Turret : MonoBehaviour {
     //回合初始化
     virtual public void Init()
     {
-        currentAmmoCount = maxXmmoCount;
+        currentAmmoCount = maxAmmoCount;
     }
 
     public void Update ()
@@ -114,61 +110,5 @@ public class Turret : MonoBehaviour {
         return fireCountdown <= 0;
     }
 
-    //被鼠标按下
-    IEnumerator OnMouseDown()
-    {
-        //获取物体在屏幕坐标
-        Vector3 ScreenSpace = Camera.main.WorldToScreenPoint(transform.position);
-        //获取物体与鼠标的位移
-        Vector3 offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, ScreenSpace.z));
-
-        //修改Layer来不被鼠标高亮
-        LayerMask formerLayer = gameObject.layer;
-        gameObject.layer = GameSetting.instance.ignoreRaycast;
-
-        //保存为被拖曳物体
-        GameManager.instance.draggingTurret = gameObject;
-
-        //while还按着鼠标
-        while (Input.GetMouseButton(0))
-        {
-            //获取鼠标屏幕位置
-            Vector3 curScreenSpace = new Vector3(Input.mousePosition.x, Input.mousePosition.y, ScreenSpace.z);
-            //获取鼠标三维位置
-            Vector3 CurPosition = Camera.main.ScreenToWorldPoint(curScreenSpace) + offset;
-            //将物体移动到鼠标三维位置
-            transform.position = CurPosition;
-
-            yield return new WaitForFixedUpdate();
-        }
-        yield return new WaitForFixedUpdate();
-
-        //鼠标起
-        //修改回原本Layer
-        gameObject.layer = formerLayer;
-
-        //清空被拖曳物体
-        //GameManager.instance.draggingTurret = null;
-
-    }
-
-    //节点设置
-    public void SetNode(GameObject _node)
-    {
-        currentNode = _node;
-    }
-
-    public void RemoveNode()
-    {
-        currentNode = null;
-
-    }
-
-    public void RemoveLastNode()
-    {
-        currentNode.GetComponent<NodeUnit>().turret = null;
-
-        currentNode = null;
-    }
 
 }

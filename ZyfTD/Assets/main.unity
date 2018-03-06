@@ -2124,6 +2124,7 @@ MonoBehaviour:
     m_Bits: 2
   turretPrefab:
   - {fileID: 1335126240226622, guid: c3cc7cb3c9cf1b249b65766c81945f8f, type: 2}
+  - {fileID: 1370744686603354, guid: de5d1eb758fbe1e42884dc9cf93b75f8, type: 2}
   gameWinUI: {fileID: 1056520508}
 --- !u!1 &2116217672
 GameObject:

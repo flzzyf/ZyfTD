@@ -152,14 +152,14 @@ public class NodeUnit : MonoBehaviour {
     {
         turret = _turret;
 
-        turret.GetComponent<Turret>().SetNode(gameObject);
+        turret.GetComponent<PlaceableObject>().SetNode(gameObject);
 
     }
 
     //移除炮塔
-    void RemoveTurret()
+    public void RemoveTurret()
     {
-        turret.GetComponent<Turret>().RemoveNode();
+        //turret.GetComponent<PlaceableObject>().RemoveNode();
 
         turret = null;
     }
