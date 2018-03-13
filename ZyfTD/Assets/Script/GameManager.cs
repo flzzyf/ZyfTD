@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour {
         //寻路
         UpdatePath();
 
-        GenerateTurret(2, 2, gameSetting.turretPrefab[1]);
+        GenerateTurret(2, 2, gameSetting.turretPrefab[0]);
         //GenerateTurret(1, 4, gameSetting.turretPrefab[0]);
 
     }
